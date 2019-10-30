@@ -52,4 +52,9 @@ public class AppTest {
 		}
 		return cadenaInvertida;
 	}
+	
+	//TODO
+	/**
+	 *  Pediente hacer un método que use el método ToString de la entidad COMIC
+	 */
 }
