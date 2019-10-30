@@ -20,232 +20,317 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
 /**
- * <b>Descripción:<b> Clase que determina un comic
- * <b>Caso de Uso:<b> 
+ * <b>Descripción:<b> Clase que determina un comic <b>Caso de Uso:<b>
+ * 
  * @author Alzate
- * @version 
+ * @version
  */
-
 @Entity
-@Table(name="COMIC")
-public class Comic implements Serializable{
+@Table(name = "COMIC")
+public class Comic implements Serializable {
 
+	// -----------------------------------------ATRIBUTOS-------------------
 	/**
-	 * Atributo que determina  
+	 * Atributo que determina el serial
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
+	/**
+	 * id del comic
+	 */
 	private String id;
-    private String nombre;
-    private String editorial;
-    private String tematicaEnum;
-    private String coleccion;
-    private Integer numeroPaginas;
-    private BigDecimal precio;
-    private String autores;
-    private Boolean color;
-    private LocalDate fechaVenta;
-    private String estadoEnum;
-    private Long cantidad;
-    
-    
-    /**
+	/**
+	 * nombre del comic
+	 */
+	private String nombre;
+	/**
+	 * editorial del comic
+	 */
+	private String editorial;
+	/**
+	 * tematica del comiv(aventura, deportico, horor....)
+	 */
+	private TematicaEnum tematicaEnum;
+	/**
+	 * coleccion del comic
+	 */
+	private String coleccion;
+	/**
+	 * numero de paginas del comic
+	 */
+	private Integer numeroPaginas;
+	/**
+	 * precio del comic
+	 */
+	private BigDecimal precio;
+	/**
+	 * Autores del comic
+	 */
+	private String autores;
+	/**
+	 * si el comic esta a color o no (true=con color, false= sin color)
+	 */
+	private Boolean color;
+	/**
+	 * fecha en la que salio a la venta
+	 */
+	private LocalDate fechaVenta;
+	/**
+	 * estado del comic (activo o inactivo)
+	 */
+	private EstadoEnum estadoEnum;
+	/**
+	 * cantidad de tomos existentes
+	 */
+	private Long cantidad;
+
+	// -------------------------------CONSTRUCTOR--------------------
+	/**
 	 * Constructor de la clase.
 	 */
 	public Comic() {
 		super();
 	}
-	
-	//--------------------------GETS AND SETS------------------------------
+
+	// --------------------------GETS AND SETS------------------------------
 	/**
 	 * Metodo encargado de retornar el valor del atributo id
+	 * 
 	 * @return El id asociado a la clase
 	 */
 	@Id
-    @Column (name="SCID")
+	@Column(name = "SCID")
 	@SequenceGenerator(allocationSize = 1, name = "COMIC_SCID_GENERATOR", sequenceName = "SEQ_COMIC")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
 	public String getId() {
 		return id;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo id
+	 * 
 	 * @param id El nuevo id a modificar.
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo nombre
+	 * 
 	 * @return El nombre asociado a la clase
 	 */
-    @Column(name="SCNOMBRE")
+	@Column(name = "SCNOMBRE")
 	public String getNombre() {
 		return nombre;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo nombre
+	 * 
 	 * @param nombre El nuevo nombre a modificar.
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo editorial
+	 * 
 	 * @return El editorial asociado a la clase
 	 */
-	@Column(name="SCEDITORIAL")
+	@Column(name = "SCEDITORIAL")
 	public String getEditorial() {
 		return editorial;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo editorial
+	 * 
 	 * @param editorial El nuevo editorial a modificar.
 	 */
 	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo tematicaEnum
+	 * 
 	 * @return El tematicaEnum asociado a la clase
 	 */
-	@Column(name="SCTEMATICA")
+	@Column(name = "SCTEMATICA")
 	@Enumerated(value = EnumType.STRING)
-	public String getTematicaEnum() {
+	public TematicaEnum getTematicaEnum() {
 		return tematicaEnum;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo tematicaEnum
+	 * 
 	 * @param tematicaEnum El nuevo tematicaEnum a modificar.
 	 */
-	public void setTematicaEnum(String tematicaEnum) {
+	public void setTematicaEnum(TematicaEnum tematicaEnum) {
 		this.tematicaEnum = tematicaEnum;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo coleccion
+	 * 
 	 * @return El coleccion asociado a la clase
 	 */
-	@Column(name="SCCOLECCION")
+	@Column(name = "SCCOLECCION")
 	public String getColeccion() {
 		return coleccion;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo coleccion
+	 * 
 	 * @param coleccion El nuevo coleccion a modificar.
 	 */
 	public void setColeccion(String coleccion) {
 		this.coleccion = coleccion;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo numeroPaginas
+	 * 
 	 * @return El numeroPaginas asociado a la clase
 	 */
-	@Column(name="SCNUMEROPAGINAS")
+	@Column(name = "SCNUMEROPAGINAS")
 	public Integer getNumeroPaginas() {
 		return numeroPaginas;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo numeroPaginas
+	 * 
 	 * @param numeroPaginas El nuevo numeroPaginas a modificar.
 	 */
 	public void setNumeroPaginas(Integer numeroPaginas) {
 		this.numeroPaginas = numeroPaginas;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo precio
+	 * 
 	 * @return El precio asociado a la clase
 	 */
-	@Column(name="SCPRECIO")
+	@Column(name = "SCPRECIO")
 	public BigDecimal getPrecio() {
 		return precio;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo precio
+	 * 
 	 * @param precio El nuevo precio a modificar.
 	 */
 	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo autores
+	 * 
 	 * @return El autores asociado a la clase
 	 */
-	@Column(name="SCAUTORES")
+	@Column(name = "SCAUTORES")
 	public String getAutores() {
 		return autores;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo autores
+	 * 
 	 * @param autores El nuevo autores a modificar.
 	 */
 	public void setAutores(String autores) {
 		this.autores = autores;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo color
+	 * 
 	 * @return El color asociado a la clase
 	 */
-	@Column(name="SCCOLOR")
+	@Column(name = "SCCOLOR")
 	public Boolean getColor() {
 		return color;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo color
+	 * 
 	 * @param color El nuevo color a modificar.
 	 */
 	public void setColor(Boolean color) {
 		this.color = color;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo fechaVenta
+	 * 
 	 * @return El fechaVenta asociado a la clase
 	 */
-	@Column(name="SCFECHA_VENTA")
+	@Column(name = "SCFECHA_VENTA")
 	public LocalDate getFechaVenta() {
 		return fechaVenta;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo fechaVenta
+	 * 
 	 * @param fechaVenta El nuevo fechaVenta a modificar.
 	 */
 	public void setFechaVenta(LocalDate fechaVenta) {
 		this.fechaVenta = fechaVenta;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo estadoEnum
+	 * 
 	 * @return El estadoEnum asociado a la clase
 	 */
-	@Column(name="SCESTADO")
-	public String getEstadoEnum() {
+	@Column(name = "SCESTADO")
+	@Enumerated(value = EnumType.STRING)
+	public EstadoEnum getEstadoEnum() {
 		return estadoEnum;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo estadoEnum
+	 * 
 	 * @param estadoEnum El nuevo estadoEnum a modificar.
 	 */
-	public void setEstadoEnum(String estadoEnum) {
+	public void setEstadoEnum(EstadoEnum estadoEnum) {
 		this.estadoEnum = estadoEnum;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo cantidad
+	 * 
 	 * @return El cantidad asociado a la clase
 	 */
-	@Column(name="SCCANTIDAD")
+	@Column(name = "SCCANTIDAD")
 	public Long getCantidad() {
 		return cantidad;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo cantidad
+	 * 
 	 * @param cantidad El nuevo cantidad a modificar.
 	 */
 	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
-	
-	/** 
+
+	// --------------------------METODOS------------------------------------------
+	/**
 	 * Metodo TOSTRING
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -255,7 +340,8 @@ public class Comic implements Serializable{
 				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estadoEnum=" + estadoEnum
 				+ ", cantidad=" + cantidad + "]";
 	}
-	/** 
+
+	/**
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -276,7 +362,8 @@ public class Comic implements Serializable{
 		result = prime * result + ((tematicaEnum == null) ? 0 : tematicaEnum.hashCode());
 		return result;
 	}
-	/** 
+
+	/**
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -350,6 +437,5 @@ public class Comic implements Serializable{
 			return false;
 		return true;
 	}
-    
- 
+
 }
