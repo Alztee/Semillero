@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
   constructor(private router: Router) {
 
   }
-
+  
   /**
    * Evento angular que se ejecuta al iniciar el componente
    */
@@ -41,7 +41,7 @@ export class MenuComponent implements OnInit {
    * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
    */
   public navegarHome(): void {
-    this.router.navigate(['bienvenida']);
+    this.router.navigate(['primer-componente']);
   }
 
   public navegarGestionarCompra(): void {
