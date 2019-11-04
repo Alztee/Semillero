@@ -100,6 +100,14 @@ public class GestionarComicPOJO {
 		listaComics.set(i, comicDTO);
 	}
 
+	/**
+	 * 
+	 * Metodo encargado de modificar un comic
+	 * @author Alzate Leon
+	 * 
+	 * @param id, id del comic a editar
+	 * @param nombre, nombre del comic a editar
+	 */
 	public void modificarComicDTO(String id, String nombre) {
 		ComicDTO comicModificar = null;
 		for (int i = 0; i < listaComics.size(); i++) {
@@ -113,7 +121,7 @@ public class GestionarComicPOJO {
 
 	/**
 	 * 
-	 * Metodo encargado de 
+	 * Metodo encargado de crear un comic 
 	 * <b>Caso de Uso</b>
 	 * @author Alzate LEon
 	 *
@@ -141,29 +149,44 @@ public class GestionarComicPOJO {
 	/**
 	 * 
 	 * Metodo encargado de Eliminar un comic DTO DE LA LISTA <b>Caso de Uso</b>
-	 * 
 	 * @author Alzate Leon
-	 * 
 	 * @param id, id del comic a eliminar
 	 */
 	public void eliminarComicDTO(String id) {
 		//
 		Boolean estado = Boolean.TRUE;
-		int aux = 0;
+		int auxiliar = 0;
 
 		while (estado == Boolean.TRUE) {
-			if (listaComics.get(aux).getID().equals(id)) {
-				listaComics.remove(aux);
+			if (listaComics.get(auxiliar).getID().equals(id)) {
+				listaComics.remove(auxiliar);
 				estado = Boolean.FALSE;
 			} else {
-				aux++;
+				auxiliar++;
 			}
 		}
+	}
+	
+	/**
+	 * 
+	 * Metodo encargado de retornar un comic dependiendo de su id 
+	 * @author Alzate Leon
+	 * 
+	 * @param id, id del comic a buscar en la lista
+	 * @return
+	 */
+	public ComicDTO buscarComicDTO(String id) {
+		ComicDTO comicDTOEncontrado=null;
+		for (int i = 0; i < listaComics.size(); i++) {
+			if(listaComics.get(i).getID()==id) {
+				comicDTOEncontrado= listaComics.get(i);
+			}
+		}
+		return comicDTOEncontrado;
 	}
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo listaComics
-	 * 
 	 * @return El listaComics asociado a la clase
 	 */
 	public List<ComicDTO> getListaComics() {
@@ -172,7 +195,6 @@ public class GestionarComicPOJO {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo listaComics
-	 * 
 	 * @param listaComics El nuevo listaComics a modificar.
 	 */
 	public void setListaComics(List<ComicDTO> listaComics) {

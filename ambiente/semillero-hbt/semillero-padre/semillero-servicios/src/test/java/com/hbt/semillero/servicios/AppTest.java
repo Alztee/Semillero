@@ -73,6 +73,7 @@ public class AppTest {
 	 * @param cadena
 	 * @return String, cadena invertida
 	 */
+	@Test(enabled = false)
 	private String invertirCadena(String cadena) {
 		String cadenaInvertida = "";
 
@@ -167,7 +168,7 @@ public class AppTest {
 		Assert.assertTrue(!gestionarComicPOJO.getListaComics().isEmpty());
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void CrearComicDTO() {
 		GestionarComicPOJO gestionarComicPOJO = new GestionarComicPOJO();
 

@@ -3,6 +3,8 @@
  */
 package com.hbt.semillero.ejb;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -60,7 +62,7 @@ public class GestionarComicBean {
 
 	/**
 	 * 
-	 * Metodo encargado de 
+	 * Metodo encargado de
 	 * 
 	 * @author Alzate Leon
 	 * 
@@ -73,19 +75,26 @@ public class GestionarComicBean {
 
 		em.merge(comic);
 	}
+
 	/**
 	 * 
-	 * Metodo encargado de 
-	 * <b>Caso de Uso</b>
-	 * @author Alzate Leon
-	 * not supported por que no es una transaccion
+	 * Metodo encargado de <b>Caso de Uso</b>
+	 * 
+	 * @author Alzate Leon not supported por que no es una transaccion, osea no se
+	 *         manipula info
 	 * @param id
 	 * @return
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public ComicDTO consultarComic(String id) {
-		Comic comic= em.find(Comic.class, id);
-		ComicDTO comicDTO= new ComicDTO(comic.getNombre(), comic.getId());
+		Comic comic = em.find(Comic.class, id);
+		ComicDTO comicDTO = new ComicDTO(comic.getNombre(), comic.getId());
 		return comicDTO;
+	}
+
+	public List<ComicDTO> consultarTodos() {
+		// nombre, entidades
+		List<Comic> resultados = (List<Comic>) em.createQuery("Select c from Comic").getResultList();
+		return null;
 	}
 }
