@@ -8,17 +8,34 @@ import java.util.ArrayList;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.entidades.Comic;
 import com.hbt.semillero.entidades.EstadoEnum;
 import com.hbt.semillero.entidades.TematicaEnum;
+import com.hbt.semillero.pojo.GestionarComicPOJO;
 
+/**
+ * 
+ * <b>Descripción:<b> Clase que determina las pruebas unitarias <b>Caso de
+ * Uso:<b>
+ * 
+ * @author Alzate Leon
+ * @version
+ */
 public class AppTest {
 
 	public void shouldAnswerWithTrue() {
 
 	}
 
-	@Test
+	/**
+	 * primera prueba unitaria Metodo encargado de <b>Caso de Uso</b>
+	 * 
+	 * @author Alzate Leon
+	 *
+	 */
+	@Test(enabled = false)
 	public void primeraPU() {
 		Long resultadoEsperado = 150l;
 		Long sumando1 = 100l;
@@ -28,10 +45,13 @@ public class AppTest {
 
 	}
 
-	@Test
 	/**
-	 * Segunda prueba unitaria que prueba si una cadena se invierte correctamente
+	 * segunda prueba unitaria Metodo encargado de <b>Caso de Uso</b>
+	 * 
+	 * @author Usuario
+	 *
 	 */
+	@Test(enabled = false)
 	public void segundaPU() {
 		String cadena = "hola";
 		String cadenaBienInvertida = "aloh";
@@ -48,7 +68,7 @@ public class AppTest {
 	}
 
 	/**
-	 * metodo para invertir una cadena
+	 * metodo para probar invertir una cadena
 	 * 
 	 * @param cadena
 	 * @return String, cadena invertida
@@ -71,7 +91,7 @@ public class AppTest {
 	 * @author Alzate
 	 *
 	 */
-	@Test
+	@Test(enabled = false)
 	public void validarToString() {
 		Comic comicNuevoComic = new Comic();
 		comicNuevoComic.setNombre("PUNISHER. EL CASTIGADOR: BLANCO Y NEGRO");
@@ -97,7 +117,7 @@ public class AppTest {
 	 * @author Alzate
 	 *
 	 */
-	@Test
+	@Test(enabled = false)
 	public void terceraPU() {
 		EstadoEnum estadoEnumActivo = EstadoEnum.ACTIVO;
 		// validar que se instancio correctamente el Enum
@@ -126,6 +146,68 @@ public class AppTest {
 			list.add(estados.name());
 			System.out.println("dato en el array: " + estados.name());
 		}
+
+	}
+
+	/**
+	 * prueba para probar la lista en la sesion 4 Metodo encargado de <b>Caso de
+	 * Uso</b>
+	 * 
+	 * @author Alzate Leon
+	 *
+	 */
+	@Test(enabled=false)
+	public void GestionarComicPojo() {
+
+		GestionarComicPOJO gestionarComicPOJO = new GestionarComicPOJO();
+		gestionarComicPOJO.crearComicDTO();
+		Assert.assertNotNull(gestionarComicPOJO.getListaComics());
+		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() != 0);
+		// es mejor usar esta
+		Assert.assertTrue(!gestionarComicPOJO.getListaComics().isEmpty());
+	}
+
+	@Test
+	public void CrearComicDTO() {
+		GestionarComicPOJO gestionarComicPOJO = new GestionarComicPOJO();
+
+		ComicDTO comicDTO = gestionarComicPOJO.crearComicDTO("101", "Captain America Corps 1-5 USA ", "panini comics",
+				TematicaEnum.FANTASTICO, "Biblioteca Marvel", 128, new BigDecimal(5000),
+				"Phillipe Briones, ROger Stern", Boolean.FALSE, LocalDate.now(), EstadoEnum.ACTIVO, 5L);
+
+		gestionarComicPOJO.agregarComicDTOLista(comicDTO);
+		Assert.assertNotNull(gestionarComicPOJO.getListaComics());
+		Assert.assertTrue(!gestionarComicPOJO.getListaComics().isEmpty());
+		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() == 1);
+		
+		comicDTO = new ComicDTO();
+		comicDTO.setID("100");
+		comicDTO.setNombre("Dragon Ball Yamcha");
+		comicDTO.setEditorial("Planeta còmic");
+		comicDTO.setTematica(TematicaEnum.AVENTURAS);
+		comicDTO.setColeccion("Manga Shonen");
+		comicDTO.setNumeroPaginas(100);
+		comicDTO.setPrecio(new BigDecimal(2100));
+		comicDTO.setAutores("Dragon Garow Lee");
+		comicDTO.setColor(Boolean.FALSE);
+		comicDTO.setFecha(LocalDate.now());
+		comicDTO.setEstado(EstadoEnum.ACTIVO);
+		comicDTO.setCantidad(20L);
+		
+		gestionarComicPOJO.agregarComicDTOLista(comicDTO);
+		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() >1);
+
+	}
+
+	/**
+	 * 
+ 	 * Metodo encargado de 
+	 * <b>Caso de Uso</b>
+	 * @author Usuario
+	 *
+	 */
+	@Test (enabled=false)
+	public void AgregarComicDTOLista() {
 
 	}
 }

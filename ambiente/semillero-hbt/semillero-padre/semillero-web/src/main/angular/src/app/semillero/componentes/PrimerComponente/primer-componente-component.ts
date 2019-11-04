@@ -12,9 +12,33 @@ import { Component, OnInit } from '@angular/core';
 
 })
 
+
 /**
  * exportando la clase
  */
-export class PrimerComponenteComponent{
+export class PrimerComponenteComponent implements OnInit{
+    /**
+     * variable en la que se almacena el nombre
+     */
+    nombre=null;
+    /**
+     * variable en la que se almacena la ciudad
+     */
+    ciudad=null;
+    /**
+     * Variable en la que se almacena el repositorio
+     */
+    repositorio=null;
+
+     /**
+   * Evento angular que se ejecuta al iniciar el componente
+   */
+  ngOnInit(): void {
+       this.nombre= "Sebastian Alzate Leon";
+       this.ciudad= "Armenia";
+       this.repositorio= "https://github.com/Alztee/Semillero.git";
+      
 
 }
+}
+

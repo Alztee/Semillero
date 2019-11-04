@@ -124,7 +124,7 @@ public class ComicDTO {
 	 * 
 	 * @return El sCID asociado a la clase
 	 */
-	public String getSCID() {
+	public String getID() {
 		return id;
 	}
 
@@ -133,8 +133,8 @@ public class ComicDTO {
 	 * 
 	 * @param sCID El nuevo sCID a modificar.
 	 */
-	public void setSCID(String sCID) {
-		id = sCID;
+	public void setID(String Id) {
+		id = Id;
 	}
 
 	/**
