@@ -1,12 +1,43 @@
+/**
+ * clase de prueba para realizar el taller sesion 2 angular
+ * simula un libro
+ */
 export class LibroDTO {
 
-	public  id: number;
-	public nombre: string;
+    /**
+     * id del libro
+     */
+    public  id: number;
+    /**
+     * nombre del libro
+     */
+    public nombre: string;
+    /**
+     * editorial del libro
+     */
     public editorial : string;
+    /**
+     * tamtica del libro
+     */
     public tematica:string;
-	public precio: number;
-	public autores: string;
-	public aColor: boolean;
-	public fecha: Date;
+    /**
+     * precio del libro
+     */
+    public precio: number;
+    /**
+     * autores del libro
+     */
+    public autores: string;
+    /**
+     * si el libro es a color o no
+     */
+    public aColor: boolean;
+    /**
+     * fecha de publicacion
+     */
+    public fecha: Date;
+    /**
+     * estado del libro
+     */
     public estado: boolean;
 }

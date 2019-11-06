@@ -43,14 +43,35 @@ export class PrimerComponenteComponent implements OnInit {
      * Variable que va a almacenar los datos del array los va a convertir en JSOn 
      */
     public listToJSON;
+    /**
+     * variable para dinamizar un input y usar interpolacion
+     */
+    public nombreCambiar:string;
+    /**
+     * variable que se vuelve true cuando se elimina el dato 3 de la lista
+     */
+    public variableB: boolean;
 
     /**
-  * Evento angular que se ejecuta al iniciar el componente
+     * url de la imagen
+     */
+    public imgUrl:string;
+
+    /**
+  * Evento angular que se ejecuta axcxl iniciar el componente
   */
     ngOnInit(): void {
+        //ejercicio sesion 1
         this.nombre = "Sebastian Alzate Leon";
         this.ciudad = "Armenia";
         this.repositorio = "https://github.com/Alztee/Semillero.git";
+
+        //inicializamos false
+        this.variableB=false;
+        //ponemos cualquier nombre
+        this.nombreCambiar="sebastian";
+        //inicializamos la imagen
+        this.imgUrl="http://lorempixel.com/400/200";
         
         //creamos el objeto libro con los siguientes atributos
         this.libro = new LibroDTO();
@@ -71,12 +92,24 @@ export class PrimerComponenteComponent implements OnInit {
        this.listToJSON = JSON.stringify(this.listaDatosObjeto);
     }
 
+    /**
+     * metodo que retorna un hola
+     */
     saludo():void{
         console.log("hola profe");
     }
 
-    metodoEliminar():void{
-        console.log(this.listaDatosObjeto[3]);
+    /**
+     * metodo eliminar la posicion de la lista que se envia desde el html
+     */
+    metodoEliminar(num:number):void{
+        let aEliminar=this.listaDatosObjeto[num];
+        //lo eliminamos
+        this.listaDatosObjeto.splice[num];
+        console.log("se ha eliminado: "+ aEliminar);
+        alert("se ha eliminado la variable: "+ aEliminar)
+        // variable que va a leer el ngIf para mostrar el mensaje en la web
+        this.variableB=true;
     }
 }
 

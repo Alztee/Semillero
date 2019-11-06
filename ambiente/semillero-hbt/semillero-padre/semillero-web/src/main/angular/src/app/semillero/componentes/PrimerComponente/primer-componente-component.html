@@ -23,10 +23,20 @@
 <!-- label donde se muestran los datos dentro del array-->
 <label>{{"Datos contenidos en el ARRAY: " + listToJSON}}</label>
 
-<!--boton -->
-<button (click)= "metodoEliminar()">Boton eliminar </button>
+<!--boton que envia el numero 3 como parametro para eliminar la variable en la pos 3 del array-->
+<button (click)= "metodoEliminar(3)">Boton eliminar </button>
 
-<div *ngIf="condition">Content to render when condition is true.</div>
+<!--div que nos mostrara cuando se ha eliminado el dato en la lista-->
+<div *ngIf="variableB===true">se ha eliminado. </div>
 
+<!--boton punto 6.1-->
 <button (dblclick)= "saludo()">dobleclick</button>
 
+<!--input con interpolacion variable, cambiamos los datos del input para cambiar el texto 6.2-->
+<input type="text" [(ngModel)]="nombreCambiar">
+<!--parrafo que cambia dependiendo del input 6.3-->
+<p>{{nombreCambiar}}</p><br/>
+
+<!-- imagen que cambia dinamicamente sacano la referencia del ts 6.4-->
+<!--recargar pagina para ver otra imagen-->
+<img [src]="imgUrl"/>
