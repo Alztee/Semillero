@@ -1,14 +1,32 @@
 
 <!-- html donde se muestra la informacion del ejercicio -->
+<!--estilos para que se vea mejor-->
 <style>
     label{
         color: red;
         font-weight: bold;
         font-size: 20px; 
     }
+    a{
+        color:blue
+    }
+    button{
+        background-color: coral;
+    }
 </style>
 
-<label>{{nommbre}}</label> <br/>
+<!-- primera sesion-->
+<label>{{nombre}}</label> <br/>
 <label >{{ciudad}}</label><br/>
 <a >{{repositorio}}</a><br/>
+
+<!-- label donde se muestran los datos dentro del array-->
+<label>{{"Datos contenidos en el ARRAY: " + listToJSON}}</label>
+
+<!--boton -->
+<button (click)= "metodoEliminar()">Boton eliminar </button>
+
+<div *ngIf="condition">Content to render when condition is true.</div>
+
+<button (dblclick)= "saludo()">dobleclick</button>
 
