@@ -39,7 +39,7 @@ public class Comic implements Serializable {
 	/**
 	 * id del comic
 	 */
-	private String id;
+	private Long id;
 	/**
 	 * nombre del comic
 	 */
@@ -103,7 +103,7 @@ public class Comic implements Serializable {
 	@Column(name = "SCID")
 	@SequenceGenerator(allocationSize = 1, name = "COMIC_SCID_GENERATOR", sequenceName = "SEQ_COMIC")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -112,7 +112,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @param id El nuevo id a modificar.
 	 */
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

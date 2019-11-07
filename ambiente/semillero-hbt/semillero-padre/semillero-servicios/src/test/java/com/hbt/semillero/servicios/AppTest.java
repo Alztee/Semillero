@@ -103,7 +103,7 @@ public class AppTest {
 		comicNuevoComic.setEditorial("Panini Comics");
 		comicNuevoComic.setEstadoEnum(EstadoEnum.ACTIVO);
 		comicNuevoComic.setFechaVenta(LocalDate.now());
-		comicNuevoComic.setId("0001");
+		comicNuevoComic.setId(1L);
 		comicNuevoComic.setNumeroPaginas(184);
 		comicNuevoComic.setPrecio(new BigDecimal("15.68"));
 		comicNuevoComic.setTematicaEnum(TematicaEnum.AVENTURAS);

@@ -103,9 +103,10 @@ public class GestionarComicPOJO {
 	/**
 	 * 
 	 * Metodo encargado de modificar un comic
+	 * 
 	 * @author Alzate Leon
 	 * 
-	 * @param id, id del comic a editar
+	 * @param id,     id del comic a editar
 	 * @param nombre, nombre del comic a editar
 	 */
 	public void modificarComicDTO(String id, String nombre) {
@@ -121,8 +122,8 @@ public class GestionarComicPOJO {
 
 	/**
 	 * 
-	 * Metodo encargado de crear un comic 
-	 * <b>Caso de Uso</b>
+	 * Metodo encargado de crear un comic <b>Caso de Uso</b>
+	 * 
 	 * @author Alzate LEon
 	 *
 	 */
@@ -149,6 +150,7 @@ public class GestionarComicPOJO {
 	/**
 	 * 
 	 * Metodo encargado de Eliminar un comic DTO DE LA LISTA <b>Caso de Uso</b>
+	 * 
 	 * @author Alzate Leon
 	 * @param id, id del comic a eliminar
 	 */
@@ -166,20 +168,21 @@ public class GestionarComicPOJO {
 			}
 		}
 	}
-	
+
 	/**
 	 * 
-	 * Metodo encargado de retornar un comic dependiendo de su id 
+	 * Metodo encargado de retornar un comic dependiendo de su id
+	 * 
 	 * @author Alzate Leon
 	 * 
 	 * @param id, id del comic a buscar en la lista
 	 * @return
 	 */
 	public ComicDTO buscarComicDTO(String id) {
-		ComicDTO comicDTOEncontrado=null;
+		ComicDTO comicDTOEncontrado = null;
 		for (int i = 0; i < listaComics.size(); i++) {
-			if(listaComics.get(i).getID()==id) {
-				comicDTOEncontrado= listaComics.get(i);
+			if (listaComics.get(i).getID() == id) {
+				comicDTOEncontrado = listaComics.get(i);
 			}
 		}
 		return comicDTOEncontrado;
@@ -187,6 +190,7 @@ public class GestionarComicPOJO {
 
 	/**
 	 * Metodo encargado de retornar el valor del atributo listaComics
+	 * 
 	 * @return El listaComics asociado a la clase
 	 */
 	public List<ComicDTO> getListaComics() {
@@ -195,6 +199,7 @@ public class GestionarComicPOJO {
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo listaComics
+	 * 
 	 * @param listaComics El nuevo listaComics a modificar.
 	 */
 	public void setListaComics(List<ComicDTO> listaComics) {
