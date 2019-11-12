@@ -211,4 +211,14 @@ public class AppTest {
 	public void AgregarComicDTOLista() {
 
 	}
+	
+	@Test
+	public void compararStrings() {
+		String s1= "street";
+		String s2;
+		s2= new String("Street");
+		Assert.assertTrue(s1.equals(s2));
+		//Assert.assertEquals(s1, s2);
+		
+	}
 }
