@@ -13,6 +13,9 @@ import java.time.LocalDate;
  */
 public class EjerciciosPOJO {
 
+	public int[] arreglo = new int[4];
+	public int contador = 0;
+
 	/**
 	 * 
 	 * Metodo encargado de verificar una variable <b>Caso de Uso</b>
@@ -56,7 +59,39 @@ public class EjerciciosPOJO {
 	 *
 	 */
 	public int ejercicio4(LocalDate fecha) {
-		int edad= LocalDate.now().getYear()-fecha.getYear() ;
-		return edad+fecha.getYear();
+		int edad = LocalDate.now().getYear() - fecha.getYear();
+		return edad + fecha.getYear();
+	}
+
+	/**
+	 * 
+	 * Metodo encargado de realizar el ejercicio 5
+	 * 
+	 * @author Alzate
+	 *
+	 */
+	public void ejercicio5(int numero) {
+		arreglo[contador] = numero;
+		contador++;
+	}
+
+	/**
+	 * 
+	 * Metodo encargado de organizar el arreglo usando el metodo burbuja <b>Caso de
+	 * Uso</b>
+	 * 
+	 * @author Alzate
+	 *
+	 */
+	public void organizarEjercicio5() {
+		for (int i = 0; i < arreglo.length; i++) {
+			for (int j = 0; j < arreglo.length - 1; j++) {
+				if (arreglo[j] > arreglo[j + 1]) {
+					int auxiliar = arreglo[j];
+					arreglo[j] = arreglo[j + 1];
+					arreglo[j + 1] = auxiliar;
+				}
+			}
+		}
 	}
 }

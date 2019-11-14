@@ -20,6 +20,8 @@ import com.hbt.semillero.pojo.EjerciciosPOJO;
 public class EjercicioPOJOTest {
 	public EjerciciosPOJO ejercicio = new EjerciciosPOJO();
 
+	
+
 	@Test(enabled = false)
 	public static void ejercicio2() {
 		// private String brand;
@@ -37,9 +39,39 @@ public class EjercicioPOJOTest {
 		Assert.assertTrue(ejercicio.ejercicio3(5));
 	}
 
-	@Test
+	/**
+	 * 
+	 * Metodo encargado de <b>Caso de Uso</b>
+	 * 
+	 * @author Usuario
+	 *
+	 */
+	@Test(enabled= false)
 	public void ejercicio4() {
 		Assert.assertEquals(ejercicio.ejercicio4(LocalDate.of(1996, 12, 22)), 2019);
 	}
 
+	/**
+	 * 
+	 * Metodo encargado de probar el ejercicio 5
+	 * 
+	 * @author Alzate
+	 *
+	 */
+	@Test
+	public void ejercicio5() {
+		ejercicio.ejercicio5(50);
+		ejercicio.ejercicio5(1);
+		ejercicio.ejercicio5(249);
+		ejercicio.ejercicio5(-2);
+		
+		ejercicio.organizarEjercicio5();
+		
+		Assert.assertEquals(ejercicio.arreglo[0], -2);
+		Assert.assertEquals(ejercicio.arreglo[ejercicio.arreglo.length], 249);
+		Assert.assertEquals(ejercicio.arreglo.length, 4);
+	}
+
+	
+	
 }
