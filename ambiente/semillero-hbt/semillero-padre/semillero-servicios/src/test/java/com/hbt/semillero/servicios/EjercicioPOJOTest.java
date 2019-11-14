@@ -39,7 +39,7 @@ public class EjercicioPOJOTest {
 
 	@Test
 	public void ejercicio4() {
-		Assert.assertEquals(ejercicio.ejercicio4(LocalDate.parse("1996/12/22")), 2019);
+		Assert.assertEquals(ejercicio.ejercicio4(LocalDate.of(1996, 12, 22)), 2019);
 	}
 
 }
