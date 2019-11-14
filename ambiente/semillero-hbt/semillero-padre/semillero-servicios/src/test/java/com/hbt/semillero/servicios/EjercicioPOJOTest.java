@@ -107,11 +107,11 @@ public class EjercicioPOJOTest {
 	}
 	
 	/*
-	 * metodo encargado de realizar la prueba del ejercicio 9
+	 * metodo encargado de realizar la prueba del ejercicio11
 	 */
 	@Test
-	public void ejercicio9() {
-		
+	public void ejercicio11() {
+		Assert.assertEquals(ejercicio.ejercicio11(36),10);
 	}
 	
 }

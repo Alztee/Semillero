@@ -170,4 +170,22 @@ public class EjerciciosPOJO {
 		throw new Exception();
 		
 	}
+	
+	/**
+	 * 
+	 * Metodo encargado de continuar la secuencia
+	 * @author Alzate
+	 *
+	 */
+	public int ejercicio11(Integer numero) {
+		Integer numero1= numero/10;
+		Double numero2= (double) (numero/10);
+		String numeroAux=String.valueOf(numero2);
+		String[] numeroo=numeroAux.split(",");
+		Integer numero3= Integer.parseInt(numeroo[1]);
+		
+		Integer numeroAnterior= numero3+numero1;
+		
+		return numeroAnterior+1;
+	}
 }
