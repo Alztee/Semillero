@@ -94,4 +94,32 @@ public class EjerciciosPOJO {
 			}
 		}
 	}
+
+	/**
+	 * 
+	 * Metodo encargado de partido tennis
+	 * retorna 1 si gana federer
+	 * retorna 0 si gana dominic
+	 * 
+	 * @author Alzate
+	 *
+	 */
+	public int ejercicio7(int[] rogerFedere, int[] dominic) {
+		int setsFederer = 0;
+		int setsDominic = 0;
+
+		for (int i = 0; i < dominic.length; i++) {
+			if (rogerFedere[i] > dominic[i]) {
+				setsFederer++;
+			} else {
+				setsDominic++;
+			}
+		}
+		if (setsFederer > setsDominic) {
+			return 1;
+		} else {
+			return 0;
+		}
+
+	}
 }

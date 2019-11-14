@@ -4,7 +4,6 @@
 package com.hbt.semillero.servicios;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -58,7 +57,7 @@ public class EjercicioPOJOTest {
 	 * @author Alzate
 	 *
 	 */
-	@Test
+	@Test(enabled=false)
 	public void ejercicio5() {
 		ejercicio.ejercicio5(50);
 		ejercicio.ejercicio5(1);
@@ -72,6 +71,21 @@ public class EjercicioPOJOTest {
 		Assert.assertEquals(ejercicio.arreglo.length, 4);
 	}
 
-	
+	/**
+	 * 
+	 * Metodo encargado de  probar el ejercicio 7
+	 * @author Alzate
+	 *
+	 */
+	@Test
+	public void ejercicio7() {
+		int[] f= {3,6,1,6,4};
+		int[] d= {6,4,6,5,6};
+		
+		
+		//validamos que haya ganado federer
+		Assert.assertEquals(ejercicio.ejercicio7(f, d),1 );
+		
+	}
 	
 }
