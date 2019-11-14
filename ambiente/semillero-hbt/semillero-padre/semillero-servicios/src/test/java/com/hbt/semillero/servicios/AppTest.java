@@ -212,7 +212,7 @@ public class AppTest {
 
 	}
 	
-	@Test
+	@Test(enabled = false)
 	public void compararStrings() {
 		String s1= "street";
 		String s2;
