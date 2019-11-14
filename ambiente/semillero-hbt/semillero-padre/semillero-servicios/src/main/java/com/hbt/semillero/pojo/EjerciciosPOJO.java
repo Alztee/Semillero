@@ -134,7 +134,7 @@ public class EjerciciosPOJO {
 		int[] monedas = { 50, 100, 200, 500, 1000 };
 		int[] devuelta = { 0, 0, 0, 0, 0 };
 
-		while (cambio != 0) {
+		while (cambio > 50) {
 			if (cambio / 1000 > 0) {
 				devuelta[0]++;
 				cambio = cambio - 1000;
