@@ -90,4 +90,16 @@ public class EjercicioPOJOTest {
 		
 	}
 	
+	/**
+	 * 
+	 * Metodo encargado de  probar el ejercicio 8
+	 * @author Azlte
+	 *
+	 */
+	@Test
+	public void ejercicio8(){
+		int[] res= {1, 0,0,1,5};
+		Assert.assertEquals(ejercicio.ejercicio8(5550), res);
+	}
+	
 }

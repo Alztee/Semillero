@@ -97,9 +97,8 @@ public class EjerciciosPOJO {
 
 	/**
 	 * 
-	 * Metodo encargado de partido tennis
-	 * retorna 1 si gana federer
-	 * retorna 0 si gana dominic
+	 * Metodo encargado de partido tennis retorna 1 si gana federer retorna 0 si
+	 * gana dominic
 	 * 
 	 * @author Alzate
 	 *
@@ -121,5 +120,43 @@ public class EjerciciosPOJO {
 			return 0;
 		}
 
+	}
+
+	/**
+	 * 
+	 * Metodo encargado de
+	 * 
+	 * @author Alzate
+	 *
+	 */
+	public int[] ejercicio8(Integer cambio) {
+
+		int[] monedas = { 50, 100, 200, 500, 1000 };
+		int[] devuelta = { 0, 0, 0, 0, 0 };
+
+		while (cambio != 0) {
+			if (cambio / 1000 > 0) {
+				devuelta[0]++;
+				cambio = cambio - 1000;
+			}
+			if (cambio / 500 > 0) {
+				devuelta[1]++;
+				cambio = cambio - 500;
+			}
+			if (cambio / 200 > 0) {
+				devuelta[2]++;
+				cambio = cambio - 200;
+			}
+			if (cambio / 100 > 0) {
+				devuelta[3]++;
+				cambio = cambio - 100;
+			}
+			if (cambio / 50 > 0) {
+				devuelta[4]++;
+				cambio = cambio - 50;
+			}
+
+		}
+		return devuelta;
 	}
 }
