@@ -167,7 +167,7 @@ public class EjerciciosPOJO {
 	 *
 	 */
 	public void ejercicio9() throws Exception{
-		
+		throw new Exception();
 		
 	}
 }
