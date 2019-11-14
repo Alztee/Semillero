@@ -83,8 +83,10 @@ public class EjercicioPOJOTest {
 		int[] d= {6,4,6,5,6};
 		
 		
-		//validamos que haya ganado federer
+		//validamos que haya ganado dominic
 		Assert.assertEquals(ejercicio.ejercicio7(f, d),1 );
+		//validamos que haya perdido federer
+		Assert.assertEquals(ejercicio.ejercicio7(f, d),0 );
 		
 	}
 	
