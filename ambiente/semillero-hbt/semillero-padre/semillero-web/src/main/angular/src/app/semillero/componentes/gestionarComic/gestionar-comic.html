@@ -113,7 +113,7 @@
                             <td>
                                 <!--opciones que se puden hacer con el comic-->
                                 <i class="fas fa-search 2x ml-1" (click)="consultarComic(comic)" title="Consultar"></i>
-                                <i class="fas fa-pencil-alt 2x ml-1"  [routerLink]="['/bienvenida',comic]" title="Editar"></i>
+                                <i class="fas fa-pencil-alt 2x ml-1"  (click)="editarComic(comic)" title="Editar"></i>
                                 <i class="far fa-times-circle 2x ml-1" (click)="eliminarComic(comic)" title="Eliminar"></i>
                             </td>
                         </tr>

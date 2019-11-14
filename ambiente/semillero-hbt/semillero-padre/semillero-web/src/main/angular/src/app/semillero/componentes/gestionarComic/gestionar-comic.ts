@@ -1,6 +1,6 @@
 
 import { ComicDTO } from '../../dto/comic.dto';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -31,6 +31,9 @@ export class GestionarComicComponent implements OnInit {
      */
     public listaComics: Array<ComicDTO>;
 
+    /**
+     * id comic que aumenta por cada comic agregado
+     */
     public idComic: number = 0;
 
     /**
@@ -74,21 +77,40 @@ export class GestionarComicComponent implements OnInit {
         if (this.gestionarComicForm.invalid) {
             return;
         }
-        this.idComic++;
-        this.comic = new ComicDTO();
-        this.comic.id = this.idComic + "";
-        this.comic.nombre = this.gestionarComicForm.controls.nombre.value;
-        this.comic.editorial = this.gestionarComicForm.controls.editorial.value;
-        this.comic.tematica = this.gestionarComicForm.controls.tematica.value;
-        this.comic.coleccion = this.gestionarComicForm.controls.coleccion.value;
-        this.comic.numeroPaginas = this.gestionarComicForm.controls.numeroPaginas.value;
-        this.comic.precio = this.gestionarComicForm.controls.precio.value;
-        this.comic.autores = this.gestionarComicForm.controls.autores.value;
-        this.comic.color = this.gestionarComicForm.controls.color.value;
+        if (this.buscarComic(this.comic) && this.comic.id != null) {
+            alert("editar comic");
+            this.comic = new ComicDTO();
+            this.comic.nombre = this.gestionarComicForm.controls.nombre.value;
+            this.comic.editorial = this.gestionarComicForm.controls.editorial.value;
+            this.comic.tematica = this.gestionarComicForm.controls.tematica.value;
+            this.comic.coleccion = this.gestionarComicForm.controls.coleccion.value;
+            this.comic.numeroPaginas = this.gestionarComicForm.controls.numeroPaginas.value;
+            this.comic.precio = this.gestionarComicForm.controls.precio.value;
+            this.comic.autores = this.gestionarComicForm.controls.autores.value;
+            this.comic.color = this.gestionarComicForm.controls.color.value;
 
-        this.listaComics.push(this.comic);
-        this.limpiarFormulario();
+            let index = this.listaComics.indexOf(this.comic);
+            this.listaComics[index] = this.comic;
+            this.listaComics.push(this.comic);
+            this.limpiarFormulario();
+        } else {
 
+            alert("crear comic");
+            this.idComic++;
+            this.comic = new ComicDTO();
+            this.comic.id = this.idComic + "";
+            this.comic.nombre = this.gestionarComicForm.controls.nombre.value;
+            this.comic.editorial = this.gestionarComicForm.controls.editorial.value;
+            this.comic.tematica = this.gestionarComicForm.controls.tematica.value;
+            this.comic.coleccion = this.gestionarComicForm.controls.coleccion.value;
+            this.comic.numeroPaginas = this.gestionarComicForm.controls.numeroPaginas.value;
+            this.comic.precio = this.gestionarComicForm.controls.precio.value;
+            this.comic.autores = this.gestionarComicForm.controls.autores.value;
+            this.comic.color = this.gestionarComicForm.controls.color.value;
+
+            this.listaComics.push(this.comic);
+            this.limpiarFormulario();
+        }
     }
 
 
@@ -123,7 +145,42 @@ export class GestionarComicComponent implements OnInit {
         return this.gestionarComicForm.controls;
     }
 
-    eliminarComic(): void{
-        
+    /**
+     * metodo que permite eliminar un comic
+     * @param comicEliminar, comic a eliminar de la lista
+     */
+    eliminarComic(comicEliminar: any): void {
+        this.comic = new ComicDTO;
+
+    }
+
+    /**
+     * carga los datos del comic en la pantalla actual
+     * @param comic a editar
+     */
+    editarComic(comic: any): void {
+        this.gestionarComicForm.controls.nombre.setValue(comic.nombre);
+        this.gestionarComicForm.controls.editorial.setValue(comic.editorial);
+        this.gestionarComicForm.controls.tematica.setValue(comic.tematica);
+        this.gestionarComicForm.controls.coleccion.setValue(comic.coleccion);
+        this.gestionarComicForm.controls.numeroPaginas.setValue(comic.numeroPaginas);
+        this.gestionarComicForm.controls.precio.setValue(comic.precio);
+        this.gestionarComicForm.controls.autores.setValue(comic.autores);
+        this.gestionarComicForm.controls.color.setValue(comic.color);
+    }
+
+    /**
+     * metodo que permite buscar si el comic ya esta agregado en la lista
+     * @param comic a buscar
+     */
+    buscarComic(comic: ComicDTO): boolean {
+        let aux = false;
+        this.listaComics.forEach(element => {
+            if (element.id === comic.id) {
+                aux = true;
+            }
+        });
+
+        return aux;
     }
 }
