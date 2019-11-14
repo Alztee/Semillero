@@ -98,6 +98,10 @@ public class EjercicioPOJOTest {
 	 */
 	@Test
 	public void ejercicio8(){
+		//caso de prueba 1
+		int[] res1= {0, 0,0,0,1};
+		Assert.assertEquals(ejercicio.ejercicio8(1000), res1);
+		//caso de prueba 2
 		int[] res= {1, 0,0,1,5};
 		Assert.assertEquals(ejercicio.ejercicio8(5550), res);
 	}
