@@ -159,4 +159,15 @@ public class EjerciciosPOJO {
 		}
 		return devuelta;
 	}
+	
+	/**
+	 * 
+	 * Metodo encargado de 
+	 * @author Alzate
+	 *
+	 */
+	public void ejercicio9() throws Exception{
+		
+		
+	}
 }

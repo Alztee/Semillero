@@ -106,4 +106,12 @@ public class EjercicioPOJOTest {
 		Assert.assertEquals(ejercicio.ejercicio8(5550), res);
 	}
 	
+	/*
+	 * metodo encargado de realizar la prueba del ejercicio 9
+	 */
+	@Test
+	public void ejercicio9() {
+		
+	}
+	
 }
