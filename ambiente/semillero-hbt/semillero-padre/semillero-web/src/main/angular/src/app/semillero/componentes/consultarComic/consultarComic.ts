@@ -26,13 +26,15 @@ export class ConsultarComicComponent implements OnInit {
      */
     public data: any;
 
+   
+
     /**
      * constructor del componente
      */
     constructor(private fb: FormBuilder,
         private router: Router, private activatedRoute: ActivatedRoute) {
         this.consultarComicForm = this.fb.group({
-            nombre: [null, Validators.required],
+            nombre: [null],
             editorial: [null],
             tematica: [null],
             coleccion: [null],
@@ -59,7 +61,7 @@ export class ConsultarComicComponent implements OnInit {
      */
     public mostarDatosComic(): void {
         //rellenamos los campos con los datos del comic seleccionado
-        this.consultarComicForm.controls.nombre.setValue(this.data.nombre);
+
         this.consultarComicForm.controls.nombre.setValue(this.data.nombre);
         this.consultarComicForm.controls.editorial.setValue(this.data.editorial);
         this.consultarComicForm.controls.tematica.setValue(this.data.tematica);

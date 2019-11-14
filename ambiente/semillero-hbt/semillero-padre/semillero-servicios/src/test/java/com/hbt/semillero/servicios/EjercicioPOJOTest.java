@@ -96,7 +96,7 @@ public class EjercicioPOJOTest {
 	 * @author Azlte
 	 *
 	 */
-	@Test
+	@Test(enabled=false)
 	public void ejercicio8(){
 		//caso de prueba 1
 		int[] res1= {0, 0,0,0,1};

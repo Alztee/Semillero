@@ -3,13 +3,14 @@
     <form [formGroup]="gestionarComicForm">
         <h1>Gestionar Comic</h1>
         <hr>
+        <div class="alert alert-info" *ngIf="variableEliminar===true">comic eliminado satisfactoriamente</div>
 
         <!--declaracion de los campos donde se inserta la informacion del comic -->
         <div class="row">
             <div class="col-6">
                 <label for="nombreComic">Nombre:</label>
                 <input value="asas" type="text" class="form-control" id="nombreComic" formControlName="nombre"
-                    [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" maxlength="50" >
+                    [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" maxlength="50">
                 <div *ngIf="submitted && f.nombre.errors">
                     <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido.</span>
                 </div>
@@ -64,13 +65,13 @@
                 <label for="color">A color:</label>
                 <br>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" class="custom-control-input"
-                        formControlName="color" value="true">
+                    <input type="radio" id="customRadioInline1" class="custom-control-input" formControlName="color"
+                        value="true">
                     <label class="custom-control-label" for="customRadioInline1">Si</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2"  class="custom-control-input"
-                        formControlName="color" value="false">
+                    <input type="radio" id="customRadioInline2" class="custom-control-input" formControlName="color"
+                        value="false">
                     <label class="custom-control-label" for="customRadioInline2">No</label>
                 </div>
             </div>
@@ -86,7 +87,7 @@
         </div>
 
         <br>
-        
+
         <!--lista de los comics a gregados que se muestra cuando se agrega al menos un comic-->
         <div class="row" [hidden]="listaComics.length === 0">
             <div class="col-12">
@@ -106,15 +107,16 @@
                         | uppercase-->
                         <tr *ngFor="let comic of listaComics;let i=index;">
                             <th scope="row">{{comic.id}}</th>
-                            <td>{{comic.nombre | uppercase }}</td>
+                            <td>{{comic.nombre | lowercase }}</td>
                             <td>{{comic.tematica | lowercase }}</td>
                             <td>{{comic.precio | number: '.2'}}</td>
                             <td>{{comic.color ? 'Si' : 'No' }}</td>
                             <td>
                                 <!--opciones que se puden hacer con el comic-->
                                 <i class="fas fa-search 2x ml-1" (click)="consultarComic(comic)" title="Consultar"></i>
-                                <i class="fas fa-pencil-alt 2x ml-1"  (click)="editarComic(comic)" title="Editar"></i>
-                                <i class="far fa-times-circle 2x ml-1" (click)="eliminarComic(comic)" title="Eliminar"></i>
+                                <i class="fas fa-pencil-alt 2x ml-1" (click)="editarComic(i)" title="Editar"></i>
+                                <i class="far fa-times-circle 2x ml-1" (click)="eliminarComic(comic)"
+                                    title="Eliminar"></i>
                             </td>
                         </tr>
                     </tbody>
