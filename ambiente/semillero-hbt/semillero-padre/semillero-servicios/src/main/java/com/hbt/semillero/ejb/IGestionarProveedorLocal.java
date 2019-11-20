@@ -67,4 +67,5 @@ public interface IGestionarProveedorLocal {
 	 * @return proveedorDTO
 	 */
 	public ProveedorDTO consultarProveedor(String id);
+
 }

@@ -3,6 +3,8 @@
  */
 package com.hbt.semillero.rest;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.dto.ProveedorDTO;
 import com.hbt.semillero.ejb.IGestionarProveedorLocal;
 
@@ -94,6 +97,17 @@ public class GestionarProveedorRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	public void consultarProveedor(String id) {
 		gestionarProveedor.consultarProveedor(id);
+	}
+	
+	/*
+	 * metodo encargado de consultar todos los porveedores
+	 */
+	@GET
+	@Path("/consultarProveedores")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ProveedorDTO> consultarProveedores() {
+		return gestionarProveedor.consultarProveedores();
+
 	}
 
 }

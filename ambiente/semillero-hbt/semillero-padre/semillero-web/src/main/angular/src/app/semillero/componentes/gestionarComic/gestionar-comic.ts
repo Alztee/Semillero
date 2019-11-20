@@ -32,7 +32,6 @@ export class GestionarComicComponent implements OnInit {
      */
     public listaComics: Array<ComicDTO>;
 
-    public idComic: number = 0;
 
     /**
      * Atributo que indica si se envio a validar el formulario

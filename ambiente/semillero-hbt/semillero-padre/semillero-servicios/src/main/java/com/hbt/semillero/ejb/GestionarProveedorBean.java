@@ -45,8 +45,11 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 	public void crearNuevoProveedor(ProveedorDTO nuevoProveedor) {
 		int cantidadProveedores = consultarProveedores().size();
 		if (nuevoProveedor != null && cantidadProveedores < 30 && consultarProveedor(nuevoProveedor.getId()) == null) {
-			Proveedor proveedor = convertirProveedroDTOToProveedor(nuevoProveedor);
-			em.persist(proveedor);
+			if (verificarMonto(nuevoProveedor.getMontoCredito())) {
+				Proveedor proveedor = convertirProveedroDTOToProveedor(nuevoProveedor);
+				em.persist(proveedor);
+				System.out.println("el monto es correcto, cantidad de proveedores correcto");
+			}
 		}
 	}
 
@@ -209,6 +212,20 @@ public class GestionarProveedorBean implements IGestionarProveedorLocal {
 		} else {
 			return null;
 		}
+	}
+
+	/**
+	 * 
+	 * Metodo encargado de retornar lista de los proveedores
+	 * 
+	 * @author Alzate
+	 * 
+	 * @return lista con los proveedores
+	 */
+	public List<Proveedor> consultarTodos() {
+		// nombre, entidades
+		List<Proveedor> resultados = (List<Proveedor>) em.createQuery("select p from TC_PROVEEDOR p").getResultList();
+		return resultados;
 	}
 
 }

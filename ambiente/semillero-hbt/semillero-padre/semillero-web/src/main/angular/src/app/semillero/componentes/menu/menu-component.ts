@@ -44,7 +44,10 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['bienvenida']);
   }
 
+  /**
+   * metodo que permite navegar hasta el componente gestionar compra
+   */
   public navegarGestionarCompra(): void {
-    //WIP
+    this.router.navigate(['gestionar-proveedor']);
   }
 }
