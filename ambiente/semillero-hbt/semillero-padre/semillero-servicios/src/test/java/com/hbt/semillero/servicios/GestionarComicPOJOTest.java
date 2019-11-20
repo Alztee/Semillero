@@ -31,7 +31,7 @@ public class GestionarComicPOJOTest {
 	 * @author Alzate Leon
 	 *
 	 */
-	@Test
+	@Test(enabled = false)
 	public void crearComics() {
 		// creamos el primer comic
 		gestionarComicPOJO.crearComicDTO();
@@ -67,7 +67,7 @@ public class GestionarComicPOJOTest {
 	 * @author Alzate Leon
 	 *
 	 */
-	@Test
+	@Test(enabled = false)
 	public void modificarComic102() {
 		//buscamos el comic a editar por el id
 		comicDTO=gestionarComicPOJO.buscarComicDTO("102");
@@ -95,7 +95,7 @@ public class GestionarComicPOJOTest {
 	 * @author Alzate Leon
 	 *
 	 */
-	@Test
+	@Test(enabled = false)
 	public void eliminarComic() {
 		//llamamos el metodo eliminar
 		gestionarComicPOJO.eliminarComicDTO("101");

@@ -1,8 +1,9 @@
 
 import { ComicDTO } from '../../dto/comic.dto';
-import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GestionarComicService } from '../../services/gestionar.comic.service';
 
 /**
  * @description Componenete gestionar comic, el cual contiene la logica CRUD
@@ -31,9 +32,6 @@ export class GestionarComicComponent implements OnInit {
      */
     public listaComics: Array<ComicDTO>;
 
-    /**
-     * id comic que aumenta por cada comic agregado
-     */
     public idComic: number = 0;
 
     /**
@@ -41,13 +39,13 @@ export class GestionarComicComponent implements OnInit {
      */
     public submitted: boolean;
 
-
     /**
      * @description Este es el constructor del componente GestionarComicComponent
      * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
      */
     constructor(private fb: FormBuilder,
-        private router: Router) {
+        private router: Router,
+        private gestionarComicService: GestionarComicService) {
         this.gestionarComicForm = this.fb.group({
             nombre: [null, Validators.required],
             editorial: [null],
@@ -68,6 +66,7 @@ export class GestionarComicComponent implements OnInit {
         console.log("Ingreso al al evento oninit");
         this.comic = new ComicDTO();
         this.listaComics = new Array<ComicDTO>();
+        this.consultarComics();
     }
 
     /**
@@ -90,11 +89,11 @@ export class GestionarComicComponent implements OnInit {
             this.comic.precio = this.gestionarComicForm.controls.precio.value;
             this.comic.autores = this.gestionarComicForm.controls.autores.value;
             this.comic.color = this.gestionarComicForm.controls.color.value;
-            this.listaComics[posicion - 1] = this.comic;
+            //this.listaComics[posicion - 1] = this.comic;
+
+            this.gestionarComicService.actualizarComic(this.comic)
         } else {
-            this.idComic++;
             this.comic = new ComicDTO();
-            this.comic.id = this.idComic + "";
             this.comic.nombre = this.gestionarComicForm.controls.nombre.value;
             this.comic.editorial = this.gestionarComicForm.controls.editorial.value;
             this.comic.tematica = this.gestionarComicForm.controls.tematica.value;
@@ -102,8 +101,18 @@ export class GestionarComicComponent implements OnInit {
             this.comic.numeroPaginas = this.gestionarComicForm.controls.numeroPaginas.value;
             this.comic.precio = this.gestionarComicForm.controls.precio.value;
             this.comic.autores = this.gestionarComicForm.controls.autores.value;
+            this.comic.cantidad=12;
+            this.comic.estado= "ACTIVO";
             this.comic.color = this.gestionarComicForm.controls.color.value;
-            this.listaComics.push(this.comic);
+            
+            this.gestionarComicService.crearComic(this.comic).subscribe(resultadoDTO => {
+                if (resultadoDTO.exitoso) {
+                    this.consultarComics();
+                    this.limpiarFormulario();
+                }
+            }, error => {
+                console.log(error);
+            });
         }
         this.limpiarFormulario();
     }
@@ -116,9 +125,6 @@ export class GestionarComicComponent implements OnInit {
         this.router.navigate(['consultarComic', comic]);
     }
 
-    /**
-     * metodo que nos permite limpiar los campos del formulario
-     */
     private limpiarFormulario(): void {
         this.submitted = false;
         this.gestionarComicForm.controls.nombre.setValue(null);
@@ -140,9 +146,9 @@ export class GestionarComicComponent implements OnInit {
     }
 
     /**
-     * metodo que permite eliminar un comic
-     * @param comicEliminar, comic a eliminar de la lista
-     */
+    * metodo que permite eliminar un comic
+    * @param comicEliminar, comic a eliminar de la lista
+    */
     eliminarComic(comicEliminar: any): void {
         this.comic = new ComicDTO;
         for (let i = 0; i < this.listaComics.length; i++) {
@@ -150,16 +156,16 @@ export class GestionarComicComponent implements OnInit {
                 this.listaComics.splice(i, 1);
                 //this.variableEliminar= true;
                 alert("comic: " + comicEliminar.nombre + " eliminado")
+                this.gestionarComicService.eliminarComic(this.comic)
             }
         }
         // this.variableEliminar= false;
     }
 
     /**
-     * carga los datos del comic en la pantalla actual
-     * @param comic a editar
+     * metodo que carga los datos a los campos para ser editados
      */
-    editarComic(indice: number): void {
+    public editarComic(indice: number): void {
         this.comic = this.listaComics[indice];
         this.gestionarComicForm.controls.nombre.setValue(this.comic.nombre);
         this.gestionarComicForm.controls.editorial.setValue(this.comic.editorial);
@@ -183,4 +189,17 @@ export class GestionarComicComponent implements OnInit {
         }
         return null;
     }
+
+    /**
+    * @description Metodo encargado de consultar los comics existentes
+    * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
+    */
+    public consultarComics(): void {
+        this.gestionarComicService.consultarComics().subscribe(listaComics => {
+            this.listaComics = listaComics;
+        }, error => {
+            console.log(error);
+        });
+    }
+
 }

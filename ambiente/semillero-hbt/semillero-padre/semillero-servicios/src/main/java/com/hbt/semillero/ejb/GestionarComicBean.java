@@ -9,6 +9,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.hbt.semillero.dto.ComicDTO;
@@ -22,6 +24,7 @@ import com.hbt.semillero.entidades.Comic;
  * @version
  */
 @Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class GestionarComicBean implements IGestionarComicLocal {
 
 	/**
@@ -41,6 +44,7 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	 * 
 	 * @param comicDTO, comicDTO que ayuda a mapear un COmic para persistir
 	 */
+	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void crearComic(ComicDTO comicDTO) {
 		Comic comic = convertirComicDTOToComic(comicDTO);
@@ -55,12 +59,14 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	 * 
 	 * @param comicDTO
 	 */
+	@Override
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void modificarComic(ComicDTO comicDTO) {
-		// si no manda id, crea uno nuevo, si manda update
-		Comic comic = new Comic();
 
-		em.merge(comic);
+		if (comicDTO != null) {
+			Comic comic = convertirComicDTOToComic(comicDTO);
+			em.merge(comic);
+		}
 	}
 
 	/**
@@ -76,7 +82,7 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	public ComicDTO consultarComic(String id) {
 		Comic comic = em.find(Comic.class, Long.parseLong(id));
 		ComicDTO comicDTO = convertirComicToComicDTO(comic);
-		return comicDTO; 
+		return comicDTO;
 	}
 
 	/**
@@ -97,12 +103,13 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	 * @see com.hbt.semillero.ejb.IGestionarComicLocal#modificarComic(java.lang.Long,
 	 *      java.lang.String, com.hbt.semillero.dto.ComicDTO)
 	 */
-	@Override
+
 	// @TransactionAttribute(TransactionAttributeType.REQUIRED)
 	// TODO
 	/*
 	 * resultado de llamas r modificar comic
 	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void modificarComic(Long id, String nombre, ComicDTO comicNuevo) {
 
 		Comic comicModificar;
@@ -139,17 +146,15 @@ public class GestionarComicBean implements IGestionarComicLocal {
 	}
 
 	/**
+	 * 
 	 * @see com.hbt.semillero.ejb.IGestionarComicLocal#consultarComics()
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<ComicDTO> consultarComics() {
-		// TODO Auto-generated method stub
 		List<ComicDTO> resultadosComicDTO = new ArrayList<ComicDTO>();
-		// comunica db a recibe datos consulta
-		List<Comic> resultados = em.createQuery("Select c from Comic c").getResultList();
+		List<Comic> resultados = em.createQuery("select c from Comic c").getResultList();
 		for (Comic comic : resultados) {
-			// que sea nula y
 			resultadosComicDTO.add(convertirComicToComicDTO(comic));
 		}
 		return resultadosComicDTO;

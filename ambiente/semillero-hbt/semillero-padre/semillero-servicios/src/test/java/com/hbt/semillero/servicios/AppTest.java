@@ -157,7 +157,7 @@ public class AppTest {
 	 * @author Alzate Leon
 	 *
 	 */
-	@Test(enabled=false)
+	@Test(enabled = false)
 	public void GestionarComicPojo() {
 
 		GestionarComicPOJO gestionarComicPOJO = new GestionarComicPOJO();
@@ -180,7 +180,7 @@ public class AppTest {
 		Assert.assertNotNull(gestionarComicPOJO.getListaComics());
 		Assert.assertTrue(!gestionarComicPOJO.getListaComics().isEmpty());
 		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() == 1);
-		
+
 		comicDTO = new ComicDTO();
 		comicDTO.setID("100");
 		comicDTO.setNombre("Dragon Ball Yamcha");
@@ -194,31 +194,31 @@ public class AppTest {
 		comicDTO.setFecha(LocalDate.now());
 		comicDTO.setEstado(EstadoEnum.ACTIVO);
 		comicDTO.setCantidad(20L);
-		
+
 		gestionarComicPOJO.agregarComicDTOLista(comicDTO);
-		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() >1);
+		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() > 1);
 
 	}
 
 	/**
 	 * 
- 	 * Metodo encargado de 
-	 * <b>Caso de Uso</b>
+	 * Metodo encargado de <b>Caso de Uso</b>
+	 * 
 	 * @author Usuario
 	 *
 	 */
-	@Test (enabled=false)
+	@Test(enabled = false)
 	public void AgregarComicDTOLista() {
 
 	}
-	
+
 	@Test(enabled = false)
 	public void compararStrings() {
-		String s1= "street";
+		String s1 = "street";
 		String s2;
-		s2= new String("Street");
+		s2 = new String("Street");
 		Assert.assertTrue(s1.equals(s2));
-		//Assert.assertEquals(s1, s2);
-		
+		// Assert.assertEquals(s1, s2);
+
 	}
 }

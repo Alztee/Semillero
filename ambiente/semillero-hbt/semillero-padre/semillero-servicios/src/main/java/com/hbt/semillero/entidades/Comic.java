@@ -100,9 +100,9 @@ public class Comic implements Serializable {
 	 * @return El id asociado a la clase
 	 */
 	@Id
-	@Column(name = "SCID")
 	@SequenceGenerator(allocationSize = 1, name = "COMIC_SCID_GENERATOR", sequenceName = "SEQ_COMIC")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
+	@Column(name = "SCID")
 	public Long getId() {
 		return id;
 	}

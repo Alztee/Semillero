@@ -7,8 +7,7 @@ import { ConsultarComicComponent } from './semillero/componentes/consultarComic/
 const routes: Routes = [
   { path: 'gestionar-comic', component: GestionarComicComponent },
   { path: 'bienvenida', component: BienvenidaComponent, data : null },
-  { path: 'consultarComic', component: ConsultarComicComponent, data: null}
-
+  { path: 'consultarComic', component: ConsultarComicComponent, data:null}
 ];
 
 @NgModule({

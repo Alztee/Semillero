@@ -77,7 +77,7 @@ public class EjercicioPOJOTest {
 	 * @author Alzate
 	 *
 	 */
-	@Test
+	@Test(enabled = false)
 	public void ejercicio7() {
 		int[] f= {3,6,1,6,4};
 		int[] d= {6,4,6,5,6};
@@ -109,7 +109,7 @@ public class EjercicioPOJOTest {
 	/*
 	 * metodo encargado de realizar la prueba del ejercicio11
 	 */
-	@Test
+	@Test(enabled = false)
 	public void ejercicio11() {
 		Assert.assertEquals(ejercicio.ejercicio11(36),10);
 	}

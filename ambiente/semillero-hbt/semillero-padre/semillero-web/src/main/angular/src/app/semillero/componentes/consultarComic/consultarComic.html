@@ -8,11 +8,7 @@ pero no se puede editar-->
         <div class="row">
             <div class="col-6">
                 <label for="nombreComic">Nombre:</label>
-                <input type="text" class="form-control" id="nombreComic" formControlName="nombre"
-                    [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" maxlength="50">
-                <div *ngIf="submitted && f.nombre.errors">
-                    <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido.</span>
-                </div>
+                <input type="text" class="form-control" id="nombreComic" formControlName="nombre">
             </div>
 
             <div class="col-6">
@@ -64,13 +60,13 @@ pero no se puede editar-->
                 <label for="color">A color:</label>
                 <br>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" class="custom-control-input"
-                        formControlName="color" value="true">
+                    <input type="radio" id="customRadioInline1" class="custom-control-input" formControlName="color"
+                        value="true">
                     <label class="custom-control-label" for="customRadioInline1">Si</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2"  class="custom-control-input"
-                        formControlName="color" value="false">
+                    <input type="radio" id="customRadioInline2" class="custom-control-input" formControlName="color"
+                        value="false">
                     <label class="custom-control-label" for="customRadioInline2">No</label>
                 </div>
             </div>
@@ -86,18 +82,7 @@ pero no se puede editar-->
         </div>
 
         <br>
-        
-        <div class="row" [hidden]="listaComics.length === 0">
-            <div class="col-12">
-                <table class="table">
-                    <thead>
-                        
-                    </thead>
-                </table>
-            </div>
-        </div>
+
     </form>
 
 </div>
-
-
